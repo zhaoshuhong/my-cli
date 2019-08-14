@@ -1,5 +1,5 @@
 {
-  "name": "my-cli",
+  "name": "mcrm-util-cli",
   "version": "0.0.1",
   "description": "mcrm cli",
   "main": "index.js",
