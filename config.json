@@ -1,0 +1,12 @@
+{
+  "tpl": {
+    "mcrm": {
+      "url":"http://gitlab.zj.chinamobile.com/MCRMDEVELOP/glupPackage.git",
+      "branch":"master"
+    },
+    "gulp":{
+      "url":"http://gitlab.zj.chinamobile.com/MCRMDEVELOP/glupPackage.git",
+      "branch":""
+    }
+  }
+}
