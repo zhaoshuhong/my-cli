@@ -1,12 +1,20 @@
 {
   "tpl": {
-    "mcrm": {
-      "url":"http://gitlab.zj.chinamobile.com/MCRMDEVELOP/glupPackage.git",
-      "branch":"master"
+    "pro": {
+      "h5": {
+        "url": "http://gitlab.zj.chinamobile.com/MCRMDEVELOP/glupPackage.git",
+        "branch": "master"
+      },
+      "native": {
+        "url": "http://gitlab.zj.chinamobile.com/zhaoshuhong/baoma2.git",
+        "branch": "master"
+      }
     },
-    "gulp":{
-      "url":"http://gitlab.zj.chinamobile.com/MCRMDEVELOP/glupPackage.git",
-      "branch":""
+    "tools": {
+      "gulp": {
+        "url": "http://gitlab.zj.chinamobile.com/MCRMDEVELOP/glupPackage.git",
+        "branch": ""
+      }
     }
   }
 }
