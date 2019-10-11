@@ -35,25 +35,29 @@ function getGit(name) {
     spinner.start();
     let cmdStr = `cd ${name} `;
     for (let item in branchM) {
-        let url = getName(branchM[item].url)
+        let url = getName(branchM[item].url);
         cmdStr += `&& git clone ${branchM[item].url} && cd ${url} && git checkout ${branchM[item].branch} && cd ../ `
     }
     exec(cmdStr, (error, stdout, stderr) => {
         if (error) {
             spinner.fail();
-            console.log('错误---', error)
+            console.log('错误---', error);
             process.exit()
         }
         spinner.succeed();
-        console.log(chalk.green('\n √ Generation completed!'))
-        console.log(`\n cd ${name} && npm gulp -g && npm install 安装gulp依赖\n`)
+        console.log(chalk.green('\n √ Generation completed!'));
+        console.log(`\n cd ${name} && npm gulp -g && npm install 安装gulp依赖\n`);
         process.exit()
     })
 }
 
-
-program.version('1.0.0', '-v, --version')
+program.usage('<command> [option]', 'option --type required');
+program.version(require('./package.json').version, '-v, --version')
     .command('init <name>')
+    .alias('i')
+    .description('mcrm-utl-cli:创建文件拉取模板')
+    //resume的子命令
+    .option("-n, --name <mode>", "测试1111")
     .action((name) => {
         if (!fs.existsSync(name)) {
             inquirer.prompt([
@@ -95,7 +99,7 @@ program.version('1.0.0', '-v, --version')
                                 name,
                                 description: answers.description,
                                 author: answers.author
-                            }
+                            };
                             if (fs.existsSync(fileName)) {
                                 const content = fs.readFileSync(fileName).toString();
                                 const result = handlebars.compile(content)(meta);
@@ -122,7 +126,6 @@ program.version('1.0.0', '-v, --version')
                         console.log("mkdir create success");
                         getGit(name)
                     })
-
                 }
 
             })
@@ -130,5 +133,15 @@ program.version('1.0.0', '-v, --version')
             // 错误提示项目已存在，避免覆盖原有项目
             console.log(symbols.error, chalk.red('项目已存在'));
         }
-    })
+    });
+program.command('creat <name>')
+    .description('从git仓库拉取代码')
+    .option("-c, --config", "从配置文件中拉取")
+    .option("-a, --auto", "自动配置")
+    .action((name, options) => {
+        console.log('creat ok', options.name());
+
+        var isWatch = options.name ? true : false;
+        console.log('iswatch', isWatch)
+    });
 program.parse(process.argv);
